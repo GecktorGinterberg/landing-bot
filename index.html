@@ -21,6 +21,18 @@
       color: #aaaaaa;
       margin-bottom: 40px;
     }
+    .btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #00cc99;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background-color: #00b386;
+    }
   </style>
   <!-- Meta Pixel Code -->
   <script>
@@ -44,23 +56,9 @@
 <body>
 
   <div class="title">🚀 Start earning with AI</div>
-  <div class="subtitle">Connecting to your bot...</div>
+  <div class="subtitle">Connect your wallet and earn 2–5% daily in USDT</div>
 
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const fbclid = urlParams.get('fbclid');
-
-    let telegramUrl = "https://t.me/RocketTrade_dashboardbot";
-
-    if (fbclid) {
-      telegramUrl += `?start=${fbclid}`;
-    }
-
-    // Редиректим пользователя через 1.2 секунды
-    setTimeout(() => {
-      window.location.href = telegramUrl;
-    }, 1200);
-  </script>
+  <a class="btn" href="https://t.me/RocketTrade_dashboardbot">Launch Bot</a>
 
 </body>
 </html>
