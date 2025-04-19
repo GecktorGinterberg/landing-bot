@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Crypto Bot</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    .title {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: #aaaaaa;
+      margin-bottom: 40px;
+    }
+    .btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #00cc99;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background-color: #00b386;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="title">🚀 Start earning with AI</div>
+  <div class="subtitle">Connect your wallet and earn 2–5% daily in USDT</div>
+
+  <a id="start-link" class="btn" href="https://t.me/RocketTrade_dashboardbot">Launch Bot</a>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const fbclid = urlParams.get('fbclid');
+    const startLink = document.getElementById('start-link');
+    if (fbclid) {
+      startLink.href = `https://t.me/YOUR_BOT_USERNAME?start=${fbclid}`;
+    }
+  </script>
+
+</body>
+</html>
