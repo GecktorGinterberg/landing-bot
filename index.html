@@ -34,39 +34,46 @@
       background-color: #00b386;
     }
   </style>
+
   <!-- Meta Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '680680267931115'); 
-  fbq('track', 'PageView');
-</script>
-<noscript>
-  <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id=680680267931115&ev=PageView&noscript=1"/>
-</noscript>
-<!-- End Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '680680267931115'); 
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=680680267931115&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
 </head>
 <body>
 
   <div class="title">🚀 Start earning with AI</div>
   <div class="subtitle">Connect your wallet and earn 2–5% daily in USDT</div>
 
-  <a id="start-link" class="btn" href="https://t.me/RocketTrade_dashboardbot">Launch Bot</a>
+  <a id="start-link" class="btn" href="#">Launch Bot</a>
 
   <script>
+    const startLink = document.getElementById('start-link');
     const urlParams = new URLSearchParams(window.location.search);
     const fbclid = urlParams.get('fbclid');
-    const startLink = document.getElementById('start-link');
-    if (fbclid) {
-      startLink.href = `https://t.me/RocketTrade_dashboardbot?start=${fbclid}`;
-    }
+
+    const botUsername = "RocketTrade_dashboardbot";
+
+    const tgLink = fbclid 
+      ? `https://t.me/${botUsername}?start=${encodeURIComponent(fbclid)}`
+      : `https://t.me/${botUsername}`;
+
+    startLink.href = tgLink;
   </script>
 
 </body>
