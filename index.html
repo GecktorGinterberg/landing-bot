@@ -21,20 +21,7 @@
       color: #aaaaaa;
       margin-bottom: 40px;
     }
-    .btn {
-      padding: 15px 30px;
-      font-size: 18px;
-      background-color: #00cc99;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.2s ease;
-    }
-    .btn:hover {
-      background-color: #00b386;
-    }
   </style>
-
   <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s)
@@ -53,27 +40,26 @@
          src="https://www.facebook.com/tr?id=680680267931115&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
-
 </head>
 <body>
 
   <div class="title">🚀 Start earning with AI</div>
-  <div class="subtitle">Connect your wallet and earn 2–5% daily in USDT</div>
-
-  <a id="start-link" class="btn" href="#">Launch Bot</a>
+  <div class="subtitle">Connecting to your bot...</div>
 
   <script>
-    const startLink = document.getElementById('start-link');
     const urlParams = new URLSearchParams(window.location.search);
     const fbclid = urlParams.get('fbclid');
 
-    const botUsername = "RocketTrade_dashboardbot";
+    let telegramUrl = "https://t.me/RocketTrade_dashboardbot";
 
-    const tgLink = fbclid 
-      ? `https://t.me/${botUsername}?start=${encodeURIComponent(fbclid)}`
-      : `https://t.me/${botUsername}`;
+    if (fbclid) {
+      telegramUrl += `?start=${fbclid}`;
+    }
 
-    startLink.href = tgLink;
+    // Редиректим пользователя через 1.2 секунды
+    setTimeout(() => {
+      window.location.href = telegramUrl;
+    }, 1200);
   </script>
 
 </body>
