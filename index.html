@@ -33,6 +33,18 @@
     .btn:hover {
       background-color: #00b386;
     }
+    .profit-dynamic {
+      font-size: 20px;
+      color: #00ffcc;
+      margin-bottom: 20px;
+      font-weight: bold;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #00ffcc; }
+      to { text-shadow: 0 0 20px #00ffcc; }
+    }
   </style>
   <!-- Meta Pixel Code -->
   <script>
@@ -56,9 +68,45 @@
 <body>
 
   <div class="title">🚀 Start earning with AI</div>
-  <div class="subtitle">Connect your wallet and earn 2–5% daily in USDT</div>
+  <div class="subtitle">Bot trades automatically and earns 2–3% profit daily — stable and consistent.</div>
+  
+  <div class="profit-dynamic">📈 Daily ROI: +<span id="profit">2.0</span>%</div>
 
-  <a class="btn" href="https://t.me/RocketTrade_dashboardbot">Launch Bot</a>
+  <a class="btn" id="start-btn" href="#">Launch Bot</a>
+<!-- 👇 ВСТАВЬ СЮДА -->
+<script>
+window.onload = async function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const fbclid = urlParams.get("fbclid") || null;
 
+    const res = await fetch("http://45.86.86.118:8080/register_click", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fbclid })
+    });
+
+    const data = await res.json();
+    const trackingId = data.tracking_id;
+
+    // Сохраняем, чтобы потом можно было использовать
+    localStorage.setItem("tracking_id", trackingId);
+
+    // Пример: можно навесить на кнопку
+    document.getElementById("start-btn").onclick = () => {
+        window.location.href = `https://t.me/RocketTrade_dashboardbot?start=${trackingId}`;
+    };
+
+    let profit = 2.0;
+    let direction = 1;
+
+    setInterval(() => {
+      profit += 0.1 * direction;
+      if (profit >= 3.0) direction = -1;
+      if (profit <= 2.0) direction = 1;
+      document.getElementById("profit").textContent = profit.toFixed(1);
+    }, 150);
+};
+</script>
+</body>
 </body>
 </html>
